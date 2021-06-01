@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Ex02Test {
+public class Ex02 {
     @Test
     public void shoudEnvironmentIdDevel() throws Throwable {
         InputStream inputStream = Resources.getResourceAsStream("_03/config/ex02.xml");

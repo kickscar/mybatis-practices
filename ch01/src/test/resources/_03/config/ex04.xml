@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="config/jdbc.properties" />
-    <environments default="development">
-        <environment id="development">
+    <environments default="devel">
+        <environment id="devel">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
-                <property name="driver" value="${jdbc.driverClassName}"/>
-                <property name="url" value="${jdbc.url}"/>
-                <property name="username" value="${jdbc.username}"/>
+                <property name="driver" value="org.h2.Driver"/>
+                <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MYSQL"/>
+                <property name="username" value="sa"/>
                 <property name="password" value=""/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="config/mappers/book.xml" />
+        <mapper resource="_03/config/mappers/book.xml" />
     </mappers>
 </configuration>

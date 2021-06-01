@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Ex01Test {
+public class Ex01 {
    @Test
     public void shoudThrowIOException() {
         assertThrows(IOException.class, () -> {

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class Ex03Test {
+public class Ex03 {
     @Test
     public void shoudConnectionNotNull() throws Throwable {
         InputStream inputStream = Resources.getResourceAsStream("_03/config/ex03.xml");
