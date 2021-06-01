@@ -1,4 +1,4 @@
-package me.kickscar.practices.mybatis.ch01.env;
+package _03;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.io.Resources;
@@ -20,7 +20,7 @@ public class BasicTest {
     @BeforeAll
     public static void setup() throws Throwable {
         Properties props = new Properties();
-        props.load(Resources.getResourceAsStream("config/jdbc.properties"));
+        props.load(Resources.getResourceAsStream("_03/properties/jdbc.properties"));
 
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(props.getProperty("jdbc.driverClassName"));
@@ -33,7 +33,7 @@ public class BasicTest {
     @Test
     @Order(1)
     public void testConfiguration() throws Throwable {
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("config/configuration.xml"));
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("_03/config/configuration.xml"));
         assertNotNull(sqlSessionFactory);
     }
 
