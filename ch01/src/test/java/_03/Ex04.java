@@ -24,8 +24,8 @@ public class Ex04 {
     @Test
     public void testInsertSQL()  {
         SqlSession session = sqlSessionFactory.openSession();
-
         int count = session.insert("book.insert", "마이바티스 연습");
+
         assertEquals(1, count);
     }
 }

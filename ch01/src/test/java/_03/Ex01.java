@@ -12,14 +12,15 @@ public class Ex01 {
    @Test
     public void shoudThrowIOException() {
         assertThrows(IOException.class, () -> {
-                InputStream inputStream = Resources.getResourceAsStream("_03/config/none.xml");
+            InputStream inputStream = Resources.getResourceAsStream("_03/config/none.xml");
         });
     }
 
     @Test
-    public void shoudSqlSessionFacoryNotNull() throws Throwable {
+    public void shoudSqlSessionFactoryNotNull() throws Throwable {
         InputStream inputStream = Resources.getResourceAsStream("_03/config/ex01.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
         assertNotNull(sqlSessionFactory);
     }
 }
