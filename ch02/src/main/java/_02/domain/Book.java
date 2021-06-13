@@ -1,4 +1,4 @@
-package _03.domain;
+package _02.domain;
 
 public class Book {
     private Long no;

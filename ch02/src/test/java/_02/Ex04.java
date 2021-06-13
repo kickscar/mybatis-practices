@@ -1,24 +1,27 @@
-package _03;
+package _02;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import javax.sql.DataSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Ex04 {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
     public static void setup() throws Throwable {
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("_03/config/ex04.xml"));
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("_02/config/ex04.xml"));
 
         DataSource dataSource = sqlSessionFactory.getConfiguration().getEnvironment().getDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource.getConnection());
-        scriptRunner.runScript(Resources.getResourceAsReader("_03/sql/ddl.sql"));
+        scriptRunner.runScript(Resources.getResourceAsReader("_02/sql/ddl.sql"));
     }
 
     @Test
