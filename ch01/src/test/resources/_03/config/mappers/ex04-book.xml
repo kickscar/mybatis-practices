@@ -4,5 +4,4 @@
     <insert id="insert" parameterType="string">
         insert into book values(null, #{name })
     </insert>
-
 </mapper>
