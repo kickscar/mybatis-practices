@@ -5,7 +5,7 @@
         insert into book values(null, #{name })
     </insert>
 
-    <select id="findByNo" parameterType="long" resultType="_02.domain.book">
+    <select id="findByNo" parameterType="long" resultType="book">
         select no, name from book where no = #{no }
     </select>
 </mapper>
