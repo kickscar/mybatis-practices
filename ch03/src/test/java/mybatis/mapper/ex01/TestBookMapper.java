@@ -1,4 +1,4 @@
-package mybatis.mapper.ex04;
+package mybatis.mapper.ex01;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
@@ -12,12 +12,12 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Book {
+public class TestBookMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
     public static void setup() throws Throwable {
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex04.xml"));
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex01.xml"));
 
         DataSource dataSource = sqlSessionFactory.getConfiguration().getEnvironment().getDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource.getConnection());
@@ -25,10 +25,21 @@ public class Book {
     }
 
     @Test
-    public void testInsertSQL()  {
+    public void test01InsertSQL()  {
         SqlSession session = sqlSessionFactory.openSession();
-        int count = session.insert("mybatis.mapper.ex04.Book.insert", "마이바티스 연습");
+        int count = session.insert("mybatis.mapper.ex01.Book.insert", "마이바티스 연습");
 
         assertEquals(1, count);
     }
+
+    @Test
+    public void test02nsertSQL()  {
+        SqlSession session = sqlSessionFactory.openSession();
+        Book book = session.getMapper(Book.class);
+
+        int count = book.insert("마이바티스 연습");
+
+        assertEquals(1, count);
+    }
+
 }

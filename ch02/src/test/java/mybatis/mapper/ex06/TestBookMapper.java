@@ -1,5 +1,6 @@
 package mybatis.mapper.ex06;
 
+import domain.Book;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
@@ -11,7 +12,7 @@ import javax.sql.DataSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class Book {
+public class TestBookMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -37,7 +38,7 @@ public class Book {
     @Order(2)
     public void testSelectSQL()  {
         SqlSession session = sqlSessionFactory.openSession();
-        domain.Book book = session.selectOne("mybatis.mapper.ex06.Book.findByNo", 1L);
+        Book book = session.selectOne("mybatis.mapper.ex06.Book.findByNo", 1L);
 
         assertEquals("마이바티스 연습", book.getName());
     }
