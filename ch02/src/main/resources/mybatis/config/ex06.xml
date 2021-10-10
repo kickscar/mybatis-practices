@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="_02/properties/jdbc.properties" />
+    <properties resource="properties/jdbc.properties" />
 
     <typeAliases>
-        <typeAlias type="_02.domain.Book" alias="book" />
+        <typeAlias type="domain.Book" alias="book" />
     </typeAliases>
 
     <environments default="devel">
@@ -20,6 +20,6 @@
     </environments>
 
     <mappers>
-        <mapper resource="_02/config/mappers/ex06-book.xml" />
+        <mapper resource="mybatis/mapper/ex06/book.xml" />
     </mappers>
 </configuration>

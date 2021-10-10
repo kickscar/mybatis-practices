@@ -1,4 +1,4 @@
-package _02;
+package mybatis.config;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class Ex03 {
     @Test
     public void shoudConnectionNotNull() throws Throwable {
-        InputStream inputStream = Resources.getResourceAsStream("_02/config/ex03.xml");
+        InputStream inputStream = Resources.getResourceAsStream("mybatis/config/ex03.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
         assertNotNull(sqlSessionFactory.getConfiguration().getEnvironment().getDataSource().getConnection());

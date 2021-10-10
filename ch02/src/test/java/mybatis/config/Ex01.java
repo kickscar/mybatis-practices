@@ -1,4 +1,4 @@
-package _02;
+package mybatis.config;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,13 +15,13 @@ public class Ex01 {
    @Test
     public void shoudThrowIOException() {
         assertThrows(IOException.class, () -> {
-            InputStream inputStream = Resources.getResourceAsStream("_02/config/none.xml");
+            InputStream inputStream = Resources.getResourceAsStream("mybatis/config/none.xml");
         });
     }
 
     @Test
     public void shoudSqlSessionFactoryNotNull() throws Throwable {
-        InputStream inputStream = Resources.getResourceAsStream("_02/config/ex01.xml");
+        InputStream inputStream = Resources.getResourceAsStream("mybatis/config/ex01.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
         assertNotNull(sqlSessionFactory);
