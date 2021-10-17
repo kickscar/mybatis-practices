@@ -1,4 +1,4 @@
-package mybatis.mapper.ex01;
+package mybatis.mapper.ex02;
 
 public interface Book {
     int insert(String name);

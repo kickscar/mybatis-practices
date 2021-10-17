@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TestBookMapper {
+public class TestMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -26,9 +26,11 @@ public class TestBookMapper {
 
     @Test
     @Order(1)
-    public void testInsertSQL()  {
+    public void testInsert()  {
         SqlSession session = sqlSessionFactory.openSession();
+
         int count = session.insert("mybatis.mapper.ex06.Book.insert", "마이바티스 연습");
+
         session.commit();
 
         assertEquals(1, count);
@@ -36,11 +38,11 @@ public class TestBookMapper {
 
     @Test
     @Order(2)
-    public void testSelectSQL()  {
+    public void testFindByNo()  {
         SqlSession session = sqlSessionFactory.openSession();
+
         Book book = session.selectOne("mybatis.mapper.ex06.Book.findByNo", 1L);
 
         assertEquals("마이바티스 연습", book.getName());
     }
-
 }

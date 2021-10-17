@@ -11,7 +11,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class Ex01 {
+public class TestConfigEx01 {
    @Test
     public void shoudThrowIOException() {
         assertThrows(IOException.class, () -> {

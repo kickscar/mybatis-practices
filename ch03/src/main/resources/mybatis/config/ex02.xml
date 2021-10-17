@@ -20,7 +20,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="mybatis/mapper/ex02/book.xml" class="BookRepository"/>
-        <package name="repository"/>
+        <mapper resource="mybatis/mapper/ex02/book.xml"/>
+        <!-- package name="mybatis.mapper.ex02"/ -->
     </mappers>
 </configuration>

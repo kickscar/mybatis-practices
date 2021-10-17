@@ -1,6 +1,5 @@
 package mybatis.mapper.ex02;
 
-import mybatis.mapper.ex01.Book;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
@@ -8,13 +7,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import repository.BookRepository;
 
 import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestBookRepository {
+public class TestMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -27,13 +25,12 @@ public class TestBookRepository {
     }
 
     @Test
-    public void test02nsertSQL()  {
+    public void testInsert()  {
         SqlSession session = sqlSessionFactory.openSession();
-        BookRepository book = session.getMapper(BookRepository.class);
 
+        Book book = session.getMapper(Book.class);
         int count = book.insert("마이바티스 연습");
 
         assertEquals(1, count);
     }
-
 }

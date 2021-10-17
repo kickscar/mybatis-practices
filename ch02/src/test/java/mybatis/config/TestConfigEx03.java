@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class Ex03 {
+public class TestConfigEx03 {
     @Test
     public void shoudConnectionNotNull() throws Throwable {
         InputStream inputStream = Resources.getResourceAsStream("mybatis/config/ex03.xml");

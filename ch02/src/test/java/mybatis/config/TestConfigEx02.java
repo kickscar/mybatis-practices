@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Ex02 {
+public class TestConfigEx02 {
     @Test
     public void shoudEnvironmentIdDevel() throws Throwable {
         InputStream inputStream = Resources.getResourceAsStream("mybatis/config/ex02.xml");

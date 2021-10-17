@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestBookMapper {
+public class TestMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -25,8 +25,9 @@ public class TestBookMapper {
     }
 
     @Test
-    public void testInsertSQL()  {
+    public void testInsert()  {
         SqlSession session = sqlSessionFactory.openSession();
+
         int count = session.insert("mybatis.mapper.ex04.Book.insert", "마이바티스 연습");
 
         assertEquals(1, count);
