@@ -1,5 +1,6 @@
-package mybatis.mapper.ex01;
+package mybatis.mapper.ex03;
 
+import domain.Guestbook;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
@@ -12,12 +13,12 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestMapper {
+public class TestGuestbookMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
     public static void setup() throws Throwable {
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex01.xml"));
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex03.xml"));
 
         DataSource dataSource = sqlSessionFactory.getConfiguration().getEnvironment().getDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource.getConnection());
@@ -27,8 +28,14 @@ public class TestMapper {
     @Test
     public void testInsert()  {
         SqlSession session = sqlSessionFactory.openSession();
+        GuestbookMapper guestbookMapper = session.getMapper(GuestbookMapper.class);
 
-        int count = session.insert("book.insert", "마이바티스 연습");
+        Guestbook guestbook = new Guestbook();
+        guestbook.setName("guest");
+        guestbook.setPassword("1234");
+        guestbook.setMessage("hello world");
+
+        int count = guestbookMapper.insert(guestbook);
 
         assertEquals(1, count);
     }

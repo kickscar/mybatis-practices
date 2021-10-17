@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestMapper {
+public class TestBookMapper {
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -28,8 +28,8 @@ public class TestMapper {
     public void testInsert()  {
         SqlSession session = sqlSessionFactory.openSession();
 
-        Book book = session.getMapper(Book.class);
-        int count = book.insert("마이바티스 연습");
+        BookMapper bookMapper = session.getMapper(BookMapper.class);
+        int count = bookMapper.insert("마이바티스 연습");
 
         assertEquals(1, count);
     }
