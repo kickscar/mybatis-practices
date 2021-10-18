@@ -11,11 +11,10 @@
         <![CDATA[
         insert into guestbook values(null, #{name }, #{password }, #{message }, now())
         ]]>
-        <selectKey keyProperty="no" resultType="long">
+        <selectKey keyProperty="no" resultType="long" order="AFTER">
             <![CDATA[
             select last_insert_id()
             ]]>
         </selectKey>
     </insert>
-
 </mapper>
