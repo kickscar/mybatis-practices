@@ -7,10 +7,9 @@
         ]]>
     </insert>
 
-    <update id="delete" parameterType="long">
+    <delete id="delete" parameterType="long">
         <![CDATA[
         delete from guestbook where no=${no }
         ]]>
-    </update>
-
+    </delete>
 </mapper>
