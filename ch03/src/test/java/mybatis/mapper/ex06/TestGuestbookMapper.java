@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestGuestbookMapper {
     private static GuestbookMapper guestbookMapper;
 

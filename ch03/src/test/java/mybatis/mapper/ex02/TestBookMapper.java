@@ -30,7 +30,6 @@ public class TestBookMapper {
     @Test
     public void testInsert()  {
         int count = bookMapper.insert("마이바티스 연습");
-
         assertEquals(1, count);
     }
 }

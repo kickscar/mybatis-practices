@@ -36,7 +36,6 @@ public class TestGuestbookMapper {
         guestbook.setMessage("Hello World");
 
         int count = guestbookMapper.insert(guestbook);
-
         assertEquals(1, count);
     }
 }
