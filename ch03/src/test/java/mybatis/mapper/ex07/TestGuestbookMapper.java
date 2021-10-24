@@ -1,4 +1,4 @@
-package mybatis.mapper.ex05;
+package mybatis.mapper.ex07;
 
 import domain.Guestbook;
 import org.apache.ibatis.io.Resources;
@@ -12,13 +12,12 @@ import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestGuestbookMapper {
     private static GuestbookMapper guestbookMapper;
 
     @BeforeAll
     public static void setup() throws Throwable {
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex05.xml"));
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex07.xml"));
 
         DataSource dataSource = sqlSessionFactory.getConfiguration().getEnvironment().getDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource.getConnection());
@@ -27,23 +26,22 @@ public class TestGuestbookMapper {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         guestbookMapper = sqlSession.getMapper(GuestbookMapper.class);
 
-        Guestbook guestbook = new Guestbook();
-        guestbook.setName("guest");
-        guestbook.setPassword("1234");
-        guestbook.setMessage("hello world");
+        Guestbook guestbook01 = new Guestbook();
+        guestbook01.setName("guest01");
+        guestbook01.setPassword("1234");
+        guestbook01.setMessage("message01");
+        guestbookMapper.insert(guestbook01);
 
-        guestbookMapper.insert(guestbook);
+        Guestbook guestbook02 = new Guestbook();
+        guestbook02.setName("guest02");
+        guestbook02.setPassword("1234");
+        guestbook02.setMessage("message02");
+        guestbookMapper.insert(guestbook02);
     }
 
     @Test
-    public void testUpdate()  {
-        Guestbook guestbook = new Guestbook();
-        guestbook.setNo(1L);
-        guestbook.setPassword("5678");
-        guestbook.setMessage("HELLO WORLD");
-
-        int count = guestbookMapper.update(guestbook);
-
-        assertEquals(1, count);
+    public void testFindByNo()  {
+        Guestbook guestbook = guestbookMapper.findByNo(1L);
+        assertEquals(1L, guestbook.getNo());
     }
 }
