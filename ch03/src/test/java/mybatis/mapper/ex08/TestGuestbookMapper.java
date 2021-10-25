@@ -1,4 +1,4 @@
-package mybatis.mapper.ex07;
+package mybatis.mapper.ex08;
 
 import domain.Guestbook;
 import org.apache.ibatis.io.Resources;
@@ -6,27 +6,27 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class TestGuestbookMapper {
-    private static SqlSession sqlSession;
     private static GuestbookMapper guestbookMapper;
 
     @BeforeAll
     public static void setup() throws Throwable {
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex07.xml"));
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis/config/ex08.xml"));
 
         DataSource dataSource = sqlSessionFactory.getConfiguration().getEnvironment().getDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource.getConnection());
         scriptRunner.runScript(Resources.getResourceAsReader("sql/ddl.sql"));
 
-        sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
         guestbookMapper = sqlSession.getMapper(GuestbookMapper.class);
 
         Guestbook guestbook01 = new Guestbook();
@@ -43,26 +43,14 @@ public class TestGuestbookMapper {
     }
 
     @Test
-    public void test01FindByNo()  {
-        Guestbook guestbook = sqlSession.selectOne("mybatis.mapper.ex07.GuestbookMapper.findByNo", 1L);
-        assertEquals(1L, guestbook.getNo());
+    public void testFindByNo01()  {
+        Guestbook guestbook = guestbookMapper.findByNo01(1L);
+        assertNotNull(guestbook.getRegDate());
     }
 
     @Test
-    public void test01FindAll()  {
-        List<Guestbook> guestbookList = sqlSession.selectList("mybatis.mapper.ex07.GuestbookMapper.findAll");
-        assertEquals(2, guestbookList.size());
-    }
-
-    @Test
-    public void test02FindByNo()  {
-        Guestbook guestbook = guestbookMapper.findByNo(1L);
-        assertEquals(1L, guestbook.getNo());
-    }
-
-    @Test
-    public void test02FindAll()  {
-        List<Guestbook> guestbookList = guestbookMapper.findAll();
-        assertEquals(2, guestbookList.size());
+    public void testFindByNo02()  {
+        Guestbook guestbook = guestbookMapper.findByNo02(1L);
+        assertNotNull(guestbook.getRegDate());
     }
 }

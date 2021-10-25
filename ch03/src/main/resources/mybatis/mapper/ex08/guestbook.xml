@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.ex08.GuestbookMapper">
+    <resultMap id="guestbookResult" type="guestbook">
+        <id property="no" column="no"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password" />
+        <result property="message" column="message" />
+        <result property="regDate" column="reg_date" />
+    </resultMap>
+
+    <insert id="insert" parameterType="guestbook" useGeneratedKeys="true" keyProperty="no">
+        <![CDATA[
+        insert into guestbook values(null, #{name }, #{password }, #{message }, now())
+        ]]>
+    </insert>
+
+    <select id="findByNo01" resultMap="guestbookResult" parameterType="long">
+        <![CDATA[
+        select no, name, message, reg_date from guestbook where no=#{no }
+        ]]>
+    </select>
+
+    <select id="findByNo02" resultType="guestbook" parameterType="long">
+        <![CDATA[
+        select no, name, message, reg_date as regDate from guestbook where no=#{no }
+        ]]>
+    </select>
+
+</mapper>

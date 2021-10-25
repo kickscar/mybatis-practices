@@ -1,11 +1,13 @@
 package domain;
 
+import java.util.Date;
+
 public class Guestbook {
     private Long no;
     private String name;
     private String password;
     private String message;
-    private String regDate;
+    private Date regDate;
 
     public Long getNo() {
         return no;
@@ -39,11 +41,11 @@ public class Guestbook {
         this.message = message;
     }
 
-    public String getRegDate() {
+    public Date getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(String regDate) {
+    public void setRegDate(Date regDate) {
         this.regDate = regDate;
     }
 
