@@ -4,7 +4,6 @@
     <resultMap id="guestbookResult" type="guestbook">
         <id property="no" column="no"/>
         <result property="name" column="name"/>
-        <result property="password" column="password" />
         <result property="message" column="message" />
         <result property="regDate" column="reg_date" />
     </resultMap>
