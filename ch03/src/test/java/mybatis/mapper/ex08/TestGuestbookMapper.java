@@ -10,9 +10,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
-import java.util.List;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class TestGuestbookMapper {
@@ -29,28 +28,36 @@ public class TestGuestbookMapper {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         guestbookMapper = sqlSession.getMapper(GuestbookMapper.class);
 
-        Guestbook guestbook01 = new Guestbook();
-        guestbook01.setName("guest01");
-        guestbook01.setPassword("1234");
-        guestbook01.setMessage("message01");
-        guestbookMapper.insert(guestbook01);
-
-        Guestbook guestbook02 = new Guestbook();
-        guestbook02.setName("guest02");
-        guestbook02.setPassword("1234");
-        guestbook02.setMessage("message02");
-        guestbookMapper.insert(guestbook02);
+        Guestbook guestbook = new Guestbook();
+        guestbook.setName("guest");
+        guestbook.setPassword("1234");
+        guestbook.setMessage("message");
+        guestbookMapper.insert(guestbook);
     }
 
     @Test
-    public void testFindByNo01()  {
+    public void testFindByNo01() {
         Guestbook guestbook = guestbookMapper.findByNo01(1L);
         assertNotNull(guestbook.getRegDate());
     }
 
     @Test
-    public void testFindByNo02()  {
+    public void testFindByNo02() {
         Guestbook guestbook = guestbookMapper.findByNo02(1L);
         assertNotNull(guestbook.getRegDate());
+    }
+
+    @Test
+    public void testFindByNo03() {
+        Guestbook guestbook = guestbookMapper.findByNo03(1L);
+        System.out.println(guestbook);
+        assertNotNull(guestbook.getRegDate());
+    }
+
+    @Test
+    public void testFindByNo04() {
+        Map<String, Object> map = guestbookMapper.findByNo04(1L);
+        System.out.println(map);
+        assertNotNull(map.get("REG_DATE"));
     }
 }
